@@ -92,7 +92,17 @@ d3.csv("assets/data/data.csv")
         .attr("fill", "LightBlue")
         .attr("stroke", "white")
 
-
+    var circleLabels = chartGroup.selectAll(null)
+        .data(healthData)
+        .enter()
+        .append("text")
+        .attr("x", d => xLinearScale(d.poverty))
+        .attr("y", d => yLinearScale(d.healthcare))
+        .text(d => d.abbr)
+        .attr("text-anchor", "middle")
+        .attr("alignment-baseline", "middle")
+        .attr("font-size", "15px")
+        .attr("fill", "black");
 
 
    var labelsGroup = chartGroup.append("g")
